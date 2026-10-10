@@ -1,32 +1,43 @@
 # Sistem Informasi Akademik
 
-## 1. Deskripsi Sistem
-Sistem Informasi Akademik merupakan sistem yang membantu pengelolaan informasi akademik mahasiswa, dosen, mata kuliah, KRS, dan nilai mahasiswa.
+## Deskripsi
+Sistem Informasi Akademik merupakan sistem yang dirancang untuk membantu pengelolaan data akademik, seperti data mahasiswa, dosen, mata kuliah, Kartu Rencana Studi (KRS), dan nilai mahasiswa.
 
-## 2. Pengguna Sistem
+Repository ini berisi dokumentasi rancangan basis data Sistem Informasi Akademik yang dibuat untuk memenuhi tugas mata kuliah Sistem Informasi.
 
-### Mahasiswa
-Mahasiswa membutuhkan informasi identitas diri, daftar mata kuliah, KRS, jadwal perkuliahan, nilai mata kuliah, dan hasil studi.
+## Tujuan
+- Menyusun data akademik secara terstruktur.
+- Memudahkan pengelolaan dan pencarian informasi akademik.
+- Menghubungkan data mahasiswa, dosen, mata kuliah, KRS, dan nilai.
+- Mengurangi duplikasi serta menjaga konsistensi data.
 
-### Dosen
+## Pengguna Sistem
+
+### 1. Mahasiswa
+Mahasiswa membutuhkan informasi identitas, daftar mata kuliah, KRS, jadwal perkuliahan, nilai, dan hasil studi.
+
+### 2. Dosen
 Dosen membutuhkan informasi mahasiswa yang mengikuti mata kuliah, mata kuliah yang diajar, daftar kelas, data KRS, dan nilai mahasiswa.
 
-## 3. Struktur Basis Data
+## Rancangan Tabel Basis Data
 
-Sistem Informasi Akademik memiliki lima tabel utama:
+| No. | Nama Tabel | Primary Key |
+|---|---|---|
+| 1 | Mahasiswa | NIM |
+| 2 | Dosen | NIDN |
+| 3 | Mata Kuliah | Kode_MK |
+| 4 | KRS | ID_KRS |
+| 5 | Nilai | ID_Nilai |
 
-1. Mahasiswa — menggunakan NIM sebagai primary key.
-2. Dosen — menggunakan NIDN sebagai primary key.
-3. Mata Kuliah — menggunakan Kode_MK sebagai primary key.
-4. KRS — menggunakan ID_KRS sebagai primary key.
-5. Nilai — menggunakan ID_Nilai sebagai primary key.
+## Hubungan Antar Tabel
+- **Dosen — Mata Kuliah:** One-to-Many (1:N).
+- **Mahasiswa — KRS:** One-to-Many (1:N).
+- **Mata Kuliah — KRS:** One-to-Many (1:N).
+- **KRS — Nilai:** One-to-One (1:1).
+- **Mahasiswa — Mata Kuliah:** Many-to-Many (M:N), yang dihubungkan melalui tabel KRS.
 
-## 4. Hubungan Antar Tabel
-- Satu dosen dapat mengajar beberapa mata kuliah.
-- Satu mahasiswa dapat memiliki banyak data KRS.
-- Satu mata kuliah dapat muncul pada banyak data KRS.
-- Tabel KRS menghubungkan mahasiswa dengan mata kuliah yang diambil.
-- Data nilai berhubungan dengan data KRS.
+## Informasi yang Dihasilkan
+Basis data ini dapat digunakan untuk menghasilkan daftar mata kuliah yang diambil mahasiswa, daftar mahasiswa pada suatu mata kuliah, data dosen pengampu, daftar nilai, dan riwayat hasil studi mahasiswa.
 
-## 5. Tujuan Repository
-Repository ini digunakan untuk menyimpan dokumentasi Sistem Informasi Akademik dan mencatat perubahan dokumen selama pengerjaan tugas.
+## Penutup
+Rancangan basis data ini menjadi dasar pengembangan Sistem Informasi Akademik agar data akademik dapat dikelola secara terstruktur dan saling terhubung.
